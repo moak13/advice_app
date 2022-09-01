@@ -9,6 +9,8 @@
 import 'package:stacked_core/stacked_core.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../services/network_service.dart';
+
 final locator = StackedLocator.instance;
 
 Future<void> setupLocator(
@@ -20,4 +22,5 @@ Future<void> setupLocator(
 // Register dependencies
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => SnackbarService());
+  locator.registerLazySingleton<DioHttpService>(() => DioHttpServiceImpl());
 }

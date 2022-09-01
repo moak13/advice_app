@@ -5,6 +5,7 @@ import '../../features/advice/advice_view.dart';
 import '../../features/advices/advices_view.dart';
 import '../../features/home/home_view.dart';
 import '../../features/splash/splash_view.dart';
+import '../services/network_service.dart';
 
 @StackedApp(
   routes: [
@@ -28,6 +29,10 @@ import '../../features/splash/splash_view.dart';
     ),
     LazySingleton(
       classType: SnackbarService,
+    ),
+    LazySingleton(
+      classType: DioHttpServiceImpl,
+      asType: DioHttpService,
     ),
   ],
   logger: StackedLogger(),
