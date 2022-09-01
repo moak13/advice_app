@@ -5,6 +5,7 @@ import '../../features/advice/advice_view.dart';
 import '../../features/advices/advices_view.dart';
 import '../../features/home/home_view.dart';
 import '../../features/splash/splash_view.dart';
+import '../services/internet_connection_service.dart';
 import '../services/network_service.dart';
 
 @StackedApp(
@@ -33,6 +34,10 @@ import '../services/network_service.dart';
     LazySingleton(
       classType: DioHttpServiceImpl,
       asType: DioHttpService,
+    ),
+    LazySingleton(
+      classType: InternetConnectionServiceImpl,
+      asType: InternetConnectionService,
     ),
   ],
   logger: StackedLogger(),
