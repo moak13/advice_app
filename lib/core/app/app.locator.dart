@@ -14,6 +14,7 @@ import '../services/connectivity_service.dart';
 import '../services/database_service.dart';
 import '../services/internet_connection_service.dart';
 import '../services/network_service.dart';
+import '../stores/slip_store.dart';
 
 final locator = StackedLocator.instance;
 
@@ -28,6 +29,7 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => SnackbarService());
   locator.registerLazySingleton(() => DatabaseMigrationService());
   locator.registerLazySingleton(() => DatabaseService());
+  locator.registerLazySingleton(() => SlipStore());
   locator.registerLazySingleton<DioHttpService>(() => DioHttpServiceImpl());
   locator.registerLazySingleton<InternetConnectionService>(
       () => InternetConnectionServiceImpl());
