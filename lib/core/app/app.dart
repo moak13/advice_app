@@ -1,3 +1,4 @@
+import 'package:sqflite_migration_service/sqflite_migration_service.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -6,6 +7,7 @@ import '../../features/advices/advices_view.dart';
 import '../../features/home/home_view.dart';
 import '../../features/splash/splash_view.dart';
 import '../services/connectivity_service.dart';
+import '../services/database_service.dart';
 import '../services/internet_connection_service.dart';
 import '../services/network_service.dart';
 
@@ -31,6 +33,12 @@ import '../services/network_service.dart';
     ),
     LazySingleton(
       classType: SnackbarService,
+    ),
+    LazySingleton(
+      classType: DatabaseMigrationService,
+    ),
+    LazySingleton(
+      classType: DatabaseService,
     ),
     LazySingleton(
       classType: DioHttpServiceImpl,
