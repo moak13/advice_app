@@ -6,6 +6,7 @@ import '../../features/advice/advice_view.dart';
 import '../../features/advices/advices_view.dart';
 import '../../features/home/home_view.dart';
 import '../../features/splash/splash_view.dart';
+import '../services/advice_slip_service.dart';
 import '../services/connectivity_service.dart';
 import '../services/database_service.dart';
 import '../services/internet_connection_service.dart';
@@ -55,6 +56,10 @@ import '../stores/slip_store.dart';
     LazySingleton(
       classType: ConnectivityServiceImpl,
       asType: ConnectivityService,
+    ),
+    LazySingleton(
+      classType: AdviceSlipServiceImpl,
+      asType: AdviceSlipService,
     ),
   ],
   logger: StackedLogger(),
