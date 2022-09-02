@@ -10,6 +10,7 @@ import '../services/connectivity_service.dart';
 import '../services/database_service.dart';
 import '../services/internet_connection_service.dart';
 import '../services/network_service.dart';
+import '../stores/slip_store.dart';
 
 @StackedApp(
   routes: [
@@ -39,6 +40,9 @@ import '../services/network_service.dart';
     ),
     LazySingleton(
       classType: DatabaseService,
+    ),
+    LazySingleton(
+      classType: SlipStore,
     ),
     LazySingleton(
       classType: DioHttpServiceImpl,
