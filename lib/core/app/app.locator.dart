@@ -6,10 +6,12 @@
 
 // ignore_for_file: public_member_api_docs
 
+import 'package:sqflite_migration_service/sqflite_migration_service.dart';
 import 'package:stacked_core/stacked_core.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../services/connectivity_service.dart';
+import '../services/database_service.dart';
 import '../services/internet_connection_service.dart';
 import '../services/network_service.dart';
 
@@ -24,6 +26,8 @@ Future<void> setupLocator(
 // Register dependencies
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => SnackbarService());
+  locator.registerLazySingleton(() => DatabaseMigrationService());
+  locator.registerLazySingleton(() => DatabaseService());
   locator.registerLazySingleton<DioHttpService>(() => DioHttpServiceImpl());
   locator.registerLazySingleton<InternetConnectionService>(
       () => InternetConnectionServiceImpl());
