@@ -10,6 +10,7 @@ import 'package:sqflite_migration_service/sqflite_migration_service.dart';
 import 'package:stacked_core/stacked_core.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../services/advice_slip_service.dart';
 import '../services/connectivity_service.dart';
 import '../services/database_service.dart';
 import '../services/internet_connection_service.dart';
@@ -35,4 +36,6 @@ Future<void> setupLocator(
       () => InternetConnectionServiceImpl());
   locator.registerLazySingleton<ConnectivityService>(
       () => ConnectivityServiceImpl());
+  locator
+      .registerLazySingleton<AdviceSlipService>(() => AdviceSlipServiceImpl());
 }
