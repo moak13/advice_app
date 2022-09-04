@@ -8,17 +8,27 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return ViewModelBuilder<SplashViewModel>.reactive(
+      onModelReady: (model) {
+        model.actionHandleStartUp();
+      },
       viewModelBuilder: () => SplashViewModel(),
       builder: (
         BuildContext context,
         SplashViewModel model,
         Widget? child,
       ) {
-        return const Scaffold(
+        return Scaffold(
+          backgroundColor: theme.scaffoldBackgroundColor,
           body: Center(
             child: Text(
-              'Splash View',
+              'Advice Slip App',
+              style: theme.textTheme.displayMedium?.copyWith(
+                fontSize: 30,
+                fontWeight: FontWeight.w500,
+                color: Colors.blueGrey,
+              ),
             ),
           ),
         );
