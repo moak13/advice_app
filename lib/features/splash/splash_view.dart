@@ -9,6 +9,9 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.reactive(
+      onModelReady: (model) {
+        model.actionHandleStartUp();
+      },
       viewModelBuilder: () => SplashViewModel(),
       builder: (
         BuildContext context,
