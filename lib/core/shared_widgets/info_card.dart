@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/size_manager.dart';
+import '../utils/size_manager.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard({Key? key}) : super(key: key);
+  final String informationText;
+  const InfoCard({
+    Key? key,
+    required this.informationText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,7 @@ class InfoCard extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              'Tired of the regulars? Us too. Let\'s help you get solid advices that count.',
+              informationText,
               textAlign: TextAlign.justify,
               style: theme.textTheme.caption?.copyWith(
                 fontWeight: FontWeight.w400,

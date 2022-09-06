@@ -27,7 +27,7 @@ class SlipStore {
         .delete(_slipTable, where: "id = ?", whereArgs: [slip?.id]);
   }
 
-  Future<bool> isSaved({String? slipId}) async {
+  Future<bool> isSaved({int? slipId}) async {
     _log.i('checking saved state for $slipId');
     bool status = false;
     var records = await _databaseService.database!.query(

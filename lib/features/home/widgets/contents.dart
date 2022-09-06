@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 import '../../../core/utils/size_manager.dart';
 import '../view_model/home_viewmodel.dart';
 import 'action_button.dart';
-import 'info_card.dart';
+import '../../../core/shared_widgets/info_card.dart';
 
 class Contents extends ViewModelWidget<HomeViewModel> {
   const Contents({Key? key}) : super(key: key, reactive: false);
@@ -15,7 +15,10 @@ class Contents extends ViewModelWidget<HomeViewModel> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const InfoCard(),
+        const InfoCard(
+          informationText:
+              'Tired of the regulars? Us too. Let\'s help you get solid advices that count.',
+        ),
         SizedBox(
           height: SizeMg.height(50),
         ),
