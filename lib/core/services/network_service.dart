@@ -18,7 +18,7 @@ abstract class DioHttpService {
 }
 
 class DioHttpServiceImpl implements DioHttpService {
-  final _log = getLogger('DioHttpServiceImpl');
+  final _log = getLogger('DioHttpService');
   late final Dio dio;
 
   DioHttpServiceImpl() {
@@ -48,7 +48,6 @@ class DioHttpServiceImpl implements DioHttpService {
         endpoint,
         queryParameters: queryParameters,
       );
-
       return response.data;
     } on DioError {
       rethrow;

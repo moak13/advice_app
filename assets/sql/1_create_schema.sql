@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS slip (
-    id INTEGER PRIMARY KEY,
-    slip_id Text,
+    local_id INTEGER PRIMARY KEY,
+    id Text,
     advice Text
 );

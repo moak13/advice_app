@@ -37,6 +37,9 @@ import '../stores/slip_store.dart';
       classType: SnackbarService,
     ),
     LazySingleton(
+      classType: DialogService,
+    ),
+    LazySingleton(
       classType: DatabaseMigrationService,
     ),
     LazySingleton(
