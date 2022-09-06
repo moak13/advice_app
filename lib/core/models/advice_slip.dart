@@ -12,7 +12,7 @@ class AdviceSlip {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (slip != null) {
-      data['slip'] = slip!.toJson();
+      data['slip'] = slip?.toJson();
     }
     return data;
   }

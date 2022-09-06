@@ -9,22 +9,22 @@ class SlipStore {
   final _databaseService = locator<DatabaseService>();
   final _log = getLogger('SlipStore');
 
-  Stream<List<Slip>> getStreamMovies() async* {
+  Stream<List<Slip>> getStreamAdvice() async* {
     _log.i('streaming slips');
     List<Map<String, dynamic>> slipResults =
         await _databaseService.database!.query(_slipTable);
     yield slipResults.map((e) => Slip.fromJson(e)).toList();
   }
 
-  Future<void> addMovie({Slip? slip}) async {
-    _log.i('adding slip: ${slip?.slipId}');
+  Future<void> addAdvice({Slip? slip}) async {
+    _log.i('adding slip: ${slip?.id}');
     await _databaseService.database!.insert(_slipTable, slip!.toJson());
   }
 
-  Future<void> removeMovie({Slip? slip}) async {
-    _log.i('removing slip: ${slip?.slipId}');
+  Future<void> removeAdvice({Slip? slip}) async {
+    _log.i('removing slip: ${slip?.id}');
     await _databaseService.database!
-        .delete(_slipTable, where: "Title = ?", whereArgs: [slip?.slipId]);
+        .delete(_slipTable, where: "id = ?", whereArgs: [slip?.id]);
   }
 
   Future<bool> isSaved({String? slipId}) async {
@@ -32,7 +32,7 @@ class SlipStore {
     bool status = false;
     var records = await _databaseService.database!.query(
       _slipTable,
-      where: "slip_id = ?",
+      where: "id = ?",
       whereArgs: [slipId],
     );
     var data = records.map((e) => Slip.fromJson(e)).toList();
@@ -51,7 +51,7 @@ class SlipStore {
     bool status = false;
     var records = await _databaseService.database!.query(
       _slipTable,
-      where: "slip_id = ?",
+      where: "id = ?",
       whereArgs: [slipId],
     );
     var data = records.map((e) => Slip.fromJson(e)).toList();

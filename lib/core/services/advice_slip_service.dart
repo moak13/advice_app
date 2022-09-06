@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 import '../app/app.locator.dart';
@@ -18,11 +20,14 @@ class AdviceSlipServiceImpl implements AdviceSlipService {
   Future<AdviceSlip> getRandomSlip() async {
     _log.i('function called');
     try {
+      _log.i('success data');
       final response = await _dioHttpService.appGet(
         path,
       );
-      return AdviceSlip.fromJson(response);
+      Map<String, dynamic> decodedResponse = json.decode(response);
+      return AdviceSlip.fromJson(decodedResponse);
     } on DioError {
+      _log.i('error data');
       rethrow;
     }
   }
