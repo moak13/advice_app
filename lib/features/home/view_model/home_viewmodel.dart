@@ -8,15 +8,33 @@ import '../../../core/app/app.router.dart';
 import '../../../core/enum/snackbar_enum.dart';
 import '../../../core/extensions/dio_extension.dart';
 import '../../../core/services/advice_slip_service.dart';
+import '../../../core/services/connectivity_service.dart';
 
-class HomeViewModel extends BaseViewModel {
+class HomeViewModel extends StreamViewModel<bool> {
   final _snackbarService = locator<SnackbarService>();
   final _navigationService = locator<NavigationService>();
   final _adviceSlipService = locator<AdviceSlipService>();
+  final _connectivityService = locator<ConnectivityService>();
   final _log = getLogger('HomeViewModel');
 
   void actionRouteAdvices() {
     _navigationService.navigateToAdvicesView();
+  }
+
+  void actionShowNetworkStatus(bool? value) {
+    _log.i('status: $value');
+    if (value == false) {
+      return _handleSnackbar(
+        message: 'Inactive',
+        title: 'Connection Status',
+        variant: SnackBarType.error,
+      );
+    }
+    return _handleSnackbar(
+      message: 'Active',
+      title: 'Connection Status',
+      variant: SnackBarType.success,
+    );
   }
 
   void actionGetAdviceSlip() async {
@@ -63,5 +81,14 @@ class HomeViewModel extends BaseViewModel {
       message: message,
       variant: variant,
     );
+  }
+
+  @override
+  Stream<bool> get stream => _connectivityService.connectionStatus;
+
+  @override
+  void dispose() {
+    _connectivityService.disposeStream();
+    super.dispose();
   }
 }
