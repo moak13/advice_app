@@ -6,6 +6,7 @@ import '../../../core/app/app.locator.dart';
 import '../../../core/app/app.logger.dart';
 import '../../../core/app/app.router.dart';
 import '../../../core/enum/snackbar_enum.dart';
+import '../../../core/extensions/dio_extension.dart';
 import '../../../core/services/advice_slip_service.dart';
 
 class HomeViewModel extends BaseViewModel {
@@ -36,7 +37,7 @@ class HomeViewModel extends BaseViewModel {
       setBusy(false);
       _handleSnackbar(
         title: 'Error!',
-        message: '${e.response?.statusCode}',
+        message: '${e.errorMessage}',
         variant: SnackBarType.error,
       );
     } catch (e) {
