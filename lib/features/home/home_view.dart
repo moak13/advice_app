@@ -13,6 +13,11 @@ class HomeView extends StatelessWidget {
     var theme = Theme.of(context);
     SizeMg.init(context);
     return ViewModelBuilder<HomeViewModel>.reactive(
+      onModelReady: (model) {
+        model.stream.listen((event) {
+          model.actionShowNetworkStatus(event);
+        });
+      },
       viewModelBuilder: () => HomeViewModel(),
       builder: (
         BuildContext context,
