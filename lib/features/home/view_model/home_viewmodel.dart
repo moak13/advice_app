@@ -14,6 +14,10 @@ class HomeViewModel extends BaseViewModel {
   final _adviceSlipService = locator<AdviceSlipService>();
   final _log = getLogger('HomeViewModel');
 
+  void actionRouteAdvices() {
+    _navigationService.navigateToAdvicesView();
+  }
+
   void actionGetAdviceSlip() async {
     _log.i('fetching advice');
     setBusy(true);

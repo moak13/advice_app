@@ -29,6 +29,19 @@ class HomeView extends StatelessWidget {
         }
         return Scaffold(
           backgroundColor: theme.scaffoldBackgroundColor,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            actions: [
+              IconButton(
+                color: Colors.black,
+                onPressed: () {
+                  model.actionRouteAdvices();
+                },
+                icon: const Icon(Icons.list_alt_outlined),
+              ),
+            ],
+          ),
           body: SafeArea(
             child: Stack(
               children: children,
