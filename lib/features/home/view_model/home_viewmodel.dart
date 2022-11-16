@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:stacked_themes/stacked_themes.dart';
 
 import '../../../core/app/app.locator.dart';
 import '../../../core/app/app.logger.dart';
@@ -15,7 +16,14 @@ class HomeViewModel extends StreamViewModel<bool> {
   final _navigationService = locator<NavigationService>();
   final _adviceSlipService = locator<AdviceSlipService>();
   final _connectivityService = locator<ConnectivityService>();
+  final _themeService = locator<ThemeService>();
   final _log = getLogger('HomeViewModel');
+
+  bool get isDark => _themeService.isDarkMode;
+
+  void actionSwitchTheme() {
+    _themeService.toggleDarkLightTheme();
+  }
 
   void actionRouteAdvices() {
     _navigationService.navigateToAdvicesView();

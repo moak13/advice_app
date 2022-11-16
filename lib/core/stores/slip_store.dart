@@ -17,33 +17,48 @@ class SlipStore {
   }
 
   Future<void> addAdvice({Slip? slip}) async {
-    _log.i('adding slip: ${slip?.id}');
-    await _databaseService.database!.insert(_slipTable, slip!.toJson());
+    try {
+      _log.i('adding slip: ${slip?.id}');
+      await _databaseService.database!.insert(_slipTable, slip!.toJson());
+    } catch (e) {
+      _log.e('error adding slip');
+      return;
+    }
   }
 
   Future<void> removeAdvice({Slip? slip}) async {
-    _log.i('removing slip: ${slip?.id}');
-    await _databaseService.database!
-        .delete(_slipTable, where: "id = ?", whereArgs: [slip?.id]);
+    try {
+      _log.i('removing slip: ${slip?.id}');
+      await _databaseService.database!
+          .delete(_slipTable, where: "id = ?", whereArgs: [slip?.id]);
+    } catch (e) {
+      _log.e('error deleting slip');
+      return;
+    }
   }
 
   Future<bool> isSaved({int? slipId}) async {
-    _log.i('checking saved state for $slipId');
-    bool status = false;
-    var records = await _databaseService.database!.query(
-      _slipTable,
-      where: "id = ?",
-      whereArgs: [slipId],
-    );
-    var data = records.map((e) => Slip.fromJson(e)).toList();
-    if (data.isEmpty) {
-      status = false;
-      _log.i('status: $status');
-    } else {
-      status = true;
-      _log.i('status: $status');
+    try {
+      _log.i('checking saved state for $slipId');
+      bool status = false;
+      var records = await _databaseService.database!.query(
+        _slipTable,
+        where: "id = ?",
+        whereArgs: [slipId],
+      );
+      var data = records.map((e) => Slip.fromJson(e)).toList();
+      if (data.isEmpty) {
+        status = false;
+        _log.i('status: $status');
+      } else {
+        status = true;
+        _log.i('status: $status');
+      }
+      return status;
+    } catch (e) {
+      _log.e('error checking state');
+      return false;
     }
-    return status;
   }
 
   Stream<bool> isStreamedSaved({String? slipId}) async* {

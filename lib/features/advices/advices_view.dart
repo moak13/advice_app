@@ -66,7 +66,7 @@ class AdvicesView extends StatelessWidget {
                     trailing: IconButton(
                       color: Colors.redAccent,
                       onPressed: () {
-                        model.actionDeleteAdvice(slip: slip);
+                        model.actionconfirmDelete(slip: slip);
                       },
                       icon: const Icon(Icons.delete),
                     ),
