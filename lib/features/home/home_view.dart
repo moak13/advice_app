@@ -37,9 +37,15 @@ class HomeView extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
+            leading: Switch.adaptive(
+              value: model.isDark,
+              onChanged: (value) {
+                model.actionSwitchTheme();
+              },
+            ),
             actions: [
               IconButton(
-                color: Colors.black,
+                color: theme.iconTheme.color,
                 onPressed: () {
                   model.actionRouteAdvices();
                 },

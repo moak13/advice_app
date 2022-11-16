@@ -9,6 +9,7 @@
 import 'package:sqflite_migration_service/sqflite_migration_service.dart';
 import 'package:stacked_core/stacked_core.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:stacked_themes/stacked_themes.dart';
 
 import '../services/advice_slip_service.dart';
 import '../services/connectivity_service.dart';
@@ -39,4 +40,5 @@ Future<void> setupLocator(
       () => ConnectivityServiceImpl());
   locator
       .registerLazySingleton<AdviceSlipService>(() => AdviceSlipServiceImpl());
+  locator.registerLazySingleton(() => ThemeService.getInstance());
 }
