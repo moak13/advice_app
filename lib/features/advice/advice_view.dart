@@ -75,17 +75,15 @@ class AdviceView extends StatelessWidget {
                     style: theme.textTheme.bodyLarge,
                   ),
                 ),
-                SizedBox(
-                  height: SizeMg.height(30),
-                ),
-                IconButton(
-                  onPressed: () {
-                    model.actionSaveAdvice(slip: slip);
-                  },
-                  icon: const Icon(Icons.save),
-                ),
               ],
             ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            tooltip: 'Save Advice',
+            onPressed: () {
+              model.actionconfirmSave(slip: slip);
+            },
+            child: const Icon(Icons.save),
           ),
         );
       },
